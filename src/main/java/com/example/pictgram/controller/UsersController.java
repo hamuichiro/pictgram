@@ -34,7 +34,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public String create(@Validated @ModelAttribute("form") UserForm form, BindingResult result, Model model, RedirectAttributes redirAttrs) {    public String create(@Validated @ModelAttribute("form") UserForm form, BindingResult result, Model model) {
+    public String create(@Validated @ModelAttribute("form") UserForm form, BindingResult result, Model model, RedirectAttributes redirAttrs) {
         String name = form.getName();
         String email = form.getEmail();
         String password = form.getPassword();
@@ -48,9 +48,9 @@ public class UsersController {
         	model.addAttribute("hasMessage", true);
         	model.addAttribute("class", "alert-danger");
         	model.addAttribute("message", "ユーザー登録に失敗しました。");
-        }
             return "users/new";
         }
+
 
         User entity = new User(email, name, passwordEncoder.encode(password), Authority.ROLE_USER);
         repository.saveAndFlush(entity);
