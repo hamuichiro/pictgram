@@ -207,18 +207,6 @@ public class TopicsController {
         }
 
         redirAttrs.addFlashAttribute("hasMessage", true);
-        
-        private String saveImageS3(MultipartFile image, Topic entity) throws IOException {
-        	String path = "uploads/topic/image/" + entity.getId() + "/" + image.getOriginalFilename();
-        	s3.upload(image.getInputStream(), path);
-        	String fileName = image.getOriginalFilename();
-        	File destFile = File.createTempFile("s3_", ".tmp");
-        	image.transferTo(destFile);
-        
-        	 String url = "https://" + awsBucket + ".s3-" + awsDefaultRegion + ".amazonaws.com/" + path;
-        
-        	return url;
-        }
         redirAttrs.addFlashAttribute("class", "alert-info");
         redirAttrs.addFlashAttribute("message", messageSource.getMessage("topics.create.flash.2", new String[] {}, locale));
 
@@ -239,6 +227,17 @@ public class TopicsController {
         image.transferTo(destFile);
 
         return destFile;
+    }
+    private String saveImageS3(MultipartFile image, Topic entity) throws IOException {
+    	String path = "uploads/topic/image/" + entity.getId() + "/" + image.getOriginalFilename();
+    	s3.upload(image.getInputStream(), path);
+    	String fileName = image.getOriginalFilename();
+    	File destFile = File.createTempFile("s3_", ".tmp");
+    	image.transferTo(destFile);
+    
+    	 String url = "https://" + awsBucket + ".s3-" + awsDefaultRegion + ".amazonaws.com/" + path;
+    
+    	return url;
     }
     
 }

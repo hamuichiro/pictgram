@@ -9,7 +9,6 @@ import org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAu
 @Configuration
 @EnableAutoConfiguration(exclude = {ContextInstanceDataAutoConfiguration.class})
 public class AppConfig {
-public class AppConfig {
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
