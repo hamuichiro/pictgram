@@ -30,7 +30,7 @@
 			</div>
             <pre class="description" th:text="${topic.description}"></pre>
             <div class="comments">
-              <h3 class='text-center' th:text="#{topics.index.comment}">郢ｧ�ｽｳ郢晢ｽ｡郢晢ｽｳ郢晢ｿｽ</h3>
+              <h3 class='text-center' th:text="#{topics.index.comment}">驛｢�ｽｧ�ｿｽ�ｽｽ�ｽｳ驛｢譎｢�ｽｽ�ｽ｡驛｢譎｢�ｽｽ�ｽｳ驛｢譎｢�ｽｿ�ｽｽ</h3>
               <ul th:each="comment : ${topic.comments}">
                 <li><pre class="description" th:text="${comment.description}"></pre></li>
                </ul>
