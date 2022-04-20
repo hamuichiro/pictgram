@@ -262,12 +262,68 @@ public class TopicsController {
     	image.transferTo(destFile);
     	
     	setGeoInfo(entity, destFile, fileName);
+
     	  
+
+
     
     	 String url = "https://" + awsBucket + ".s3-" + awsDefaultRegion + ".amazonaws.com/" + path;
     
     	return url;
     }
+    private void setGeoInfo(Topic entity, BufferedInputStream inputStream, String fileName)
+            throws ImageProcessingException, IOException, ImageReadException {
+        Metadata metadata = ImageMetadataReader.readMetadata(inputStream);
+        setGeoInfo(entity, metadata, inputStream, null, fileName);
+    }
+
+    private void setGeoInfo(Topic entity, File destFile, String fileName)
+            throws ImageProcessingException, IOException, ImageReadException {
+        Metadata metadata = ImageMetadataReader.readMetadata(destFile);
+        setGeoInfo(entity, metadata, null, destFile, fileName);
+    }
+
+    private void setGeoInfo(Topic entity, Metadata metadata, BufferedInputStream inputStream, File destFile,
+            String fileName) {
+        if (log.isDebugEnabled()) {
+            for (Directory directory : metadata.getDirectories()) {
+                for (Tag tag : directory.getTags()) {
+                    log.debug("{} {}", tag.toString(), tag.getTagType());
+                }
+            }
+        }
+
+        try {
+            IImageMetadata iMetadata = null;
+            if (inputStream != null) {
+                iMetadata = Sanselan.getMetadata(inputStream, fileName);
+                IOUtils.closeQuietly(inputStream);
+            }
+            if (destFile != null) {
+                iMetadata = Sanselan.getMetadata(destFile);
+            }
+            if (iMetadata != null) {
+                GPSInfo gpsInfo = null;
+                if (iMetadata instanceof JpegImageMetadata) {
+                    gpsInfo = ((JpegImageMetadata) iMetadata).getExif().getGPS();
+                    if (gpsInfo != null) {
+                        log.debug("latitude={}", gpsInfo.getLatitudeAsDegreesNorth());
+                        log.debug("longitude={}", gpsInfo.getLongitudeAsDegreesEast());
+                        entity.setLatitude(gpsInfo.getLatitudeAsDegreesNorth());
+                        entity.setLongitude(gpsInfo.getLongitudeAsDegreesEast());
+                    }
+                } else {
+                    List<?> items = iMetadata.getItems();
+                    for (Object item : items) {
+                        log.debug(item.toString());
+                    }
+                }
+            }
+        } catch (ImageReadException | IOException e) {
+            log.warn(e.getMessage(), e);
+        }
+    }
+    
     private void setGeoInfo(Topic entity, BufferedInputStream inputStream, String fileName)
             throws ImageProcessingException, IOException, ImageReadException {
         Metadata metadata = ImageMetadataReader.readMetadata(inputStream);
