@@ -332,7 +332,6 @@ public class TopicsController {
         }
     }
     
-
     @RequestMapping(value = "/topics/topic.csv", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
             + "; charset=UTF-8; Content-Disposition: attachment")
     @ResponseBody
@@ -345,6 +344,7 @@ public class TopicsController {
         CsvSchema schema = mapper.schemaFor(TopicCsv.class).withHeader();
 
         return mapper.writer(schema).writeValueAsString(csv);
+
 
     private void setGeoInfo(Topic entity, BufferedInputStream inputStream, String fileName)
             throws ImageProcessingException, IOException, ImageReadException {
@@ -399,5 +399,5 @@ public class TopicsController {
         }
 
     }
-    
+
 }

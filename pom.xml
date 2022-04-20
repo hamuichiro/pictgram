@@ -101,6 +101,9 @@
 		  <version>2.15.0</version>
 		</dependency>
 		<dependency>
+topic/#32
+
+
 		  <groupId>org.apache.sanselan</groupId>
 		  <artifactId>sanselan</artifactId>
 		  <version>0.97-incubator</version>
@@ -112,6 +115,7 @@
 		</dependency>
 
 
+main
 	</dependencies>
 	<build>
 		<plugins>
