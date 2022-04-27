@@ -101,15 +101,24 @@
 		  <version>2.15.0</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.fasterxml.jackson.dataformat</groupId>
-		  <artifactId>jackson-dataformat-csv</artifactId>
-		</dependency>
-		<dependency>
+topic/#32
+
+
 		  <groupId>org.apache.sanselan</groupId>
 		  <artifactId>sanselan</artifactId>
 		  <version>0.97-incubator</version>
 		</dependency>
 
+		<dependency>
+		  <groupId>com.fasterxml.jackson.dataformat</groupId>
+		  <artifactId>jackson-dataformat-csv</artifactId>
+		</dependency>
+
+		<dependency>
+		  <groupId>org.apache.sanselan</groupId>
+		  <artifactId>sanselan</artifactId>
+		  <version>0.97-incubator</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
