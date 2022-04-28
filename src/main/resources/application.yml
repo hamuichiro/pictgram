@@ -27,6 +27,20 @@ spring:
     
 
 
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${google.client.id}
+            client-secret: ${google.client.secret}
+          github:
+            clientId: ${github.client.id}
+            clientSecret: ${github.client.secret}
+            
+
+
   
 cloud:
   aws:
@@ -38,3 +52,6 @@ cloud:
 
 onesignal:
   id: ${onesignal.id}
+  
+googlemap:
+  key: ${googlemap.key}
