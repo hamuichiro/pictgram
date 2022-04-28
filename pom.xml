@@ -108,6 +108,19 @@ topic/#32
 		  <artifactId>sanselan</artifactId>
 		  <version>0.97-incubator</version>
 		</dependency>
+<<<<<<< HEAD
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-webflux</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-webflux</artifactId>
+=======
 
 		<dependency>
 		  <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -118,6 +131,7 @@ topic/#32
 		  <groupId>org.apache.sanselan</groupId>
 		  <artifactId>sanselan</artifactId>
 		  <version>0.97-incubator</version>
+>>>>>>> 04473e58657ac73dca8cc0ded9c66e998b00c871
 		</dependency>
 	</dependencies>
 	<build>
