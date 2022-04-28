@@ -24,6 +24,7 @@ spring:
             trust: smtp.gmail.com
   thymeleaf:
     check-template-location: false
+    
 
 
   
