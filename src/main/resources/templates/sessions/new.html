@@ -23,7 +23,7 @@
             <label class="form-label text-white" for="session_password" th:text="#{sessions.new.password}">Password</label>
             <input class="form-control" type="password" name="password" id="session_password" />
           </div>
-          <input type="submit" value="郢晢ｽｭ郢ｧ�ｽｰ郢ｧ�ｽ､郢晢ｽｳ" class="btn w-100 btn-outline-light" th:value="#{sessions.new.submit}"/>
+          <input type="submit" value="驛｢譎｢�ｽｽ�ｽｭ驛｢�ｽｧ�ｿｽ�ｽｽ�ｽｰ驛｢�ｽｧ�ｿｽ�ｽｽ�ｽ､驛｢譎｢�ｽｽ�ｽｳ" class="btn w-100 btn-outline-light" th:value="#{sessions.new.submit}"/>
         </form>
       </main>
     </div>
@@ -36,14 +36,15 @@
                <span class="bi bi-google"></span><span th:text="#{sessions.new.login_google}" />
            </a>
            </div>
-         </div>
-       </div>
-   </div>
-   <div class="mb-3">
+              <div class="mb-3">
            <a class="btn w-100 btn-social btn-github text-center" href="/oauth2/authorization/github">
              <span class="bi bi-github"></span><span th:text="#{sessions.new.login_github}" />
            </a>
          </div>
+         </div>
+       </div>
+   </div>
+
 </div>
   </body>
 </html>
