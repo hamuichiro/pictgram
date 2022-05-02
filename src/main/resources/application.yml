@@ -25,6 +25,9 @@ spring:
   thymeleaf:
     check-template-location: false
     
+
+
+
   security:
     oauth2:
       client:
@@ -36,8 +39,7 @@ spring:
             clientId: ${github.client.id}
             clientSecret: ${github.client.secret}
             
-  
-  
+
 
   
 cloud:
